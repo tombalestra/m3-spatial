@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3D Gaussian Splatting Viewer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #fff;
+            color: #000;
+        }
+        .viewer-container {
+            position: relative;
+            width: min(80vh, 90%);
+            margin: 20px auto;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            cursor: grab;
+        }
+        canvas:active {
+            cursor: grabbing;
+        }
+        .control-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            background: transparent;
+        }
+        .title {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-size: 24px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        button {
+            padding: 8px 16px;
+            background: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #1976D2;
+        }
+        .controls-help {
+            display: none;
+        }
+        .key {
+            display: inline-block;
+            padding: 2px 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin: 0 4px;
+            font-family: monospace;
+        }
+        .coordinates {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: white;
+            font-family: monospace;
+            font-size: 14px;
+            z-index: 5;
+        }
+        .coordinates .vector {
+            display: inline-block;
+        }
+        .vector-value {
+            display: inline-block;
+            width: 40px;
+            text-align: right;
+        }
+        .page-header {
+            text-align: center;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        .color-info {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+        .info-box {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        /* New Controls Overlay Styles */
+        .controls-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 30px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 12px;
+            font-family: Arial, sans-serif;
+            z-index: 10;
+            align-items: flex-start;
+        }
+        
+        .control-text {
+            font-size: 14px;
+            margin-bottom: 6px;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+        
+        /* Movement keys styling */
+        .keys-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .key-row {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 4px;
+        }
+        
+        .key-wasd {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+        
+        .shift-key {
+            width: 60px;
+            font-size: 12px;
+            margin-right: 10px;
+        }
+        
+        .key-blank {
+            width: 30px;
+            height: 30px;
+        }
+        
+        /* Mouse styling */
+        .look-controls {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        .mouse-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .mouse {
+            width: 25px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 15px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .mouse-button {
+            width: 3px;
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.6);
+            position: absolute;
+            top: 8px;
+            border-radius: 2px;
+        }
+        
+        /* Mode panel styles - updated for smaller buttons without label */
+        .mode-panel {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        
+        .mode-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .mode-button {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 6px;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .mode-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .mode-button.active {
+            background: rgba(33, 150, 243, 0.6);
+            border-color: rgba(33, 150, 243, 0.8);
+        }
+        
+        .mode-label {
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        
+        .key-label {
+            width: 30px;
+            height: 20px;
+            font-size: 10px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Add this new style for the first empty key-label */
+        .key-label:first-child {
+            width: 70px;  /* Match the width of the shift key */
+        }
+    </style>
+</head>
+<body>
+    <h1 class="page-header">3D Gaussian Splatting Demo</h1>
+    <div class="color-info">
+    </div>
+    
+    <div class="viewer-container">
+        <canvas id="renderCanvas"></canvas>
+        
+        <div class="coordinates">
+            Position: <span id="position">X: 0.00, Y: 0.00, Z: 0.00</span><br>
+            Rotation: <span id="rotation">Pitch: 0.00°, Yaw: -90.00°, Roll: 0.00°</span>
+        </div>
+        
+        <div class="control-panel">
+            <button id="resetView">Reset View</button>
+        </div>
+        
+        <!-- Updated mode panel with labels next to buttons -->
+        <div class="mode-panel">
+            <div class="mode-item">
+                <div id="mode-0" class="mode-button active">0</div>
+                <div class="mode-label">RGB</div>
+            </div>
+            <div class="mode-item">
+                <div id="mode-1" class="mode-button">1</div>
+                <div class="mode-label">CLIP</div>
+            </div>
+            <div class="mode-item">
+                <div id="mode-2" class="mode-button">2</div>
+                <div class="mode-label">SigLIP</div>
+            </div>
+            <div class="mode-item">
+                <div id="mode-3" class="mode-button">3</div>
+                <div class="mode-label">DINOv2</div>
+            </div>
+            <div class="mode-item">
+                <div id="mode-4" class="mode-button">4</div>
+                <div class="mode-label">SEEM</div>
+            </div>
+            <div class="mode-item">
+                <div id="mode-5" class="mode-button">5</div>
+                <div class="mode-label">Llama3</div>
+            </div>
+            <div class="mode-item">
+                <div id="mode-6" class="mode-button">6</div>
+                <div class="mode-label">LlamaV</div>
+            </div>
+        </div>
+        
+        <!-- Old controls (hidden) -->
+        <div class="controls-help">
+            <p><strong>Navigation Controls:</strong></p>
+            <p><span class="key">W</span> / <span class="key">S</span> Move up/down</p>
+            <p><span class="key">A</span> / <span class="key">D</span> Strafe left/right</p>
+            <p><span class="key">Q</span> / <span class="key">E</span> Move forward/backward</p>
+            <p><span class="key">Mouse</span> Click and drag to rotate view</p>
+            <p><span class="key">Reset</span> Reset camera to initial position</p>
+        </div>
+        
+        <!-- Update the controls overlay to show keyboard controls for rotation -->
+        <div class="controls-overlay">
+            <div class="movement-controls">
+                <div class="control-text">Use WASD keys to move<br>Q/E to move forward/back</div>
+                <div class="keys-container">
+                    <div class="key-row">
+                        <div class="key-wasd">Q</div>
+                        <div class="key-wasd">W</div>
+                        <div class="key-wasd">E</div>
+                    </div>
+                    <div class="key-row">
+                        <div class="key-wasd">A</div>
+                        <div class="key-wasd">S</div>
+                        <div class="key-wasd">D</div>
+                    </div>
+                </div>
+            </div>
+            <div class="rotation-controls">
+                <div class="control-text">Use Z/X/C keys to control rotation<br>Hold Shift for opposite direction</div>
+                <div class="keys-container">
+                    <div class="key-row">
+                        <div class="key-wasd shift-key">SHIFT</div>
+                        <div class="key-wasd">Z</div>
+                        <div class="key-wasd">X</div>
+                        <div class="key-wasd">C</div>
+                    </div>
+                    <div class="key-row">
+                        <div class="key-label"></div>
+                        <div class="key-label">Pitch</div>
+                        <div class="key-label">Yaw</div>
+                        <div class="key-label">Roll</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"></script>
+    <script src="viewer.js"></script>
+    <script>
+        // Initialize the viewer when the page loads
+        window.addEventListener('load', () => {
+            const viewer = new GaussianViewer();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+CUDA_VISIBLE_DEVICES=7 python3 -m xy_utils.gma_visualization \
+--source_path /data/xueyanz/data/3dgs/train \
+--model_path /data/xueyanz/output/mmm/ckpt/train/train_bsz8_gpu8_embTrue_clipTrue_sigTrue_dinoTrue_seemTrue_llaTrue_llvTrue_dim160_temp0.05_baseline/run_0000 \
+--preload_dataset_to_gpu_threshold 0 \
+--local_sampling \
+--render \
+--skip_train \
+--use_embed \
+--use_clip \
+--use_siglip \
+--use_seem \
+--use_dinov2 \
+--use_llama3 \
+--use_llamav

@@ -1,0 +1,1 @@
+from .inference_semsam_m2m_auto import *

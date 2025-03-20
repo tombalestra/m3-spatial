@@ -1,0 +1,1 @@
+Both SAM v1 and v2 is not suitable for feature extraction because they actually treat query as none sense spatial query, so that the clustering they learned is really local, that's why the feature from SAM is very bad.

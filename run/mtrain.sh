@@ -1,0 +1,16 @@
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 torchrun --standalone --nnodes=1 --nproc-per-node=8 train.py \
+--source_path /data/xueyanz/data/3dgs/train \
+--model_path /data/xueyanz/output/mmm/ckpt/train \
+--postfix "baseline" \
+--preload_dataset_to_gpu_threshold 0 \
+--local_sampling \
+--bsz 8 \
+--eval \
+--use_wandb \
+--use_embed \
+--use_clip \
+--use_siglip \
+--use_seem \
+--use_dinov2 \
+--use_llama3 \
+--use_llamav
