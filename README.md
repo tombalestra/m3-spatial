@@ -37,3 +37,6 @@ cd submodules/simple-knn && pip install -e .
 ```
 
 ## Dataset
+* Downloading data from raw image
+1. https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/datasets/input/tandt_db.zip
+2. http://storage.googleapis.com/gresearch/refraw360/360_v2.zip
