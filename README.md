@@ -38,6 +38,9 @@ cd submodules/simple-knn && pip install -e .
 ```
 
 ## Demo
+```sh
+sh run/app.sh
+```
 https://github.com/user-attachments/assets/42038d0b-8016-4f98-bf96-9cbae0c79708
 
 ## Dataset
@@ -53,7 +56,12 @@ Coming Soon...
 Coming Soon...
 
 ## Training
-Coming Soon...
+```sh
+sh run/train.sh # single GPU
+sh run/mtrain.sh # multi GPU
+```
 
 ## Evaluation
-Coming Soon...
+```sh
+sh run/render_metrics.sh # single GPU
+```
