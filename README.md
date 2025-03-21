@@ -1,5 +1,5 @@
 # M3: 3D-Spatial Multimodal Memory
-https://github.com/user-attachments/assets/c5ffa7c4-65e6-463f-bb99-8ea680b3ce32
+<img width="933" alt="Screenshot 2025-03-20 at 6 38 50 PM" src="https://github.com/user-attachments/assets/92d41b69-eee8-4a3b-8710-492d656078c0" />
 
 
 ## TODO
