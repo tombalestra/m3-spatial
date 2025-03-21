@@ -1,6 +1,5 @@
 # M3: 3D-Spatial Multimodal Memory
-<img width="933" alt="Screenshot 2025-03-20 at 6 38 50 PM" src="https://github.com/user-attachments/assets/92d41b69-eee8-4a3b-8710-492d656078c0" />
-
+https://github.com/user-attachments/assets/d37ff5c9-d9f0-4a0a-88c0-f80e475176d7
 
 ## TODO
 - [x] Installation
@@ -54,5 +53,7 @@ Coming Soon...
 Coming Soon...
 
 ## Training
+Coming Soon...
 
 ## Evaluation
+Coming Soon...
