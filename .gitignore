@@ -28,3 +28,4 @@ run/seem_infer_visual.sh
 demo/*
 *.gif
 single_view_output/*
+__pycache__/*
