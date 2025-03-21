@@ -1,12 +1,12 @@
 # M3: 3D-Spatial Multimodal Memory
 
 ## TODO
-- [] Installation
-- [] Demo
-- [] Checkpoint
-- [] Dataset
-- [] Training
-- [] Inference
+- [ ] Installation
+- [ ] Demo
+- [ ] Checkpoint
+- [ ] Dataset
+- [ ] Training
+- [ ] Inference
 
 ## Installation
 * Prepare Conda Environment
