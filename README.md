@@ -1,9 +1,11 @@
 # M3: 3D-Spatial Multimodal Memory
+https://github.com/user-attachments/assets/c5ffa7c4-65e6-463f-bb99-8ea680b3ce32
+
 
 ## TODO
 - [x] Installation
-- [ ] Dataset
 - [ ] Demo
+- [ ] Dataset
 - [ ] Checkpoint
 - [ ] Training
 - [ ] Inference
@@ -36,12 +38,21 @@ cd submodules/gsplat && pip install -e .
 cd submodules/simple-knn && pip install -e .
 ```
 
+## Demo
+https://github.com/user-attachments/assets/42038d0b-8016-4f98-bf96-9cbae0c79708
+
 ## Dataset
 * Download data for raw image
 1. https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/datasets/input/tandt_db.zip
 2. http://storage.googleapis.com/gresearch/refraw360/360_v2.zip
 
 * Download data for embeddings
-TBD...
+
+Coming Soon...
 
 ## Checkpoint
+Coming Soon...
+
+## Training
+
+## Evaluation
