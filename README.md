@@ -1,10 +1,10 @@
 # M3: 3D-Spatial Multimodal Memory
 
 ## TODO
-- [ ] Installation
+- [x] Installation
+- [ ] Dataset
 - [ ] Demo
 - [ ] Checkpoint
-- [ ] Dataset
 - [ ] Training
 - [ ] Inference
 
@@ -35,3 +35,5 @@ git clone git@github.com:nyu-systems/Grendel-GS.git --recursive
 cd submodules/gsplat && pip install -e .
 cd submodules/simple-knn && pip install -e .
 ```
+
+## Dataset
