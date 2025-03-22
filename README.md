@@ -5,7 +5,7 @@ https://github.com/user-attachments/assets/d37ff5c9-d9f0-4a0a-88c0-f80e475176d7
 - [x] Installation
 - [ ] Demo
 - [ ] Dataset
-- [ ] Checkpoint
+- [x] Checkpoint
 - [ ] Training
 - [ ] Inference
 
@@ -54,6 +54,7 @@ Coming Soon...
 
 ## Checkpoint
 * We prepare trained M3 representation for two scenes train and geisel.
+
 | Name       | size | link      |
 |------------|-----|-----------------|
 | train      | 2.04GB  | https://huggingface.co/xueyanz/M3-Train/resolve/main/train_ckpt.tar.gz   |
