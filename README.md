@@ -3,7 +3,7 @@ https://github.com/user-attachments/assets/d37ff5c9-d9f0-4a0a-88c0-f80e475176d7
 
 ## TODO
 - [x] Installation
-- [ ] Demo
+- [x] Demo
 - [ ] Dataset
 - [x] Checkpoint
 - [ ] Training
