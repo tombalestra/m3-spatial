@@ -48,9 +48,19 @@ https://github.com/user-attachments/assets/42038d0b-8016-4f98-bf96-9cbae0c79708
 1. https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/datasets/input/tandt_db.zip
 2. http://storage.googleapis.com/gresearch/refraw360/360_v2.zip
 
-* Download data for embeddings
+* Download data for embedding
 
 Coming Soon...
+
+* Feature Extraction
+```sh
+python3 -m lmm.clip.extract # CLIP feature
+python3 -m lmm.siglip.extract # SigLIP feature
+python3 -m lmm.dinov2.extract # DINOv2 feature
+python3 -m lmm.llama.extract # LLaMA3 feature
+python3 -m lmm.llamav.extract # LLaMAv feature
+python3 -m lmm.seem.extract # SEEM feature
+```
 
 ## Checkpoint
 * We prepare trained M3 representation for two scenes train and geisel.
