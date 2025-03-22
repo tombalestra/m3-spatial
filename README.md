@@ -53,7 +53,11 @@ https://github.com/user-attachments/assets/42038d0b-8016-4f98-bf96-9cbae0c79708
 Coming Soon...
 
 ## Checkpoint
-Coming Soon...
+* We prepare trained M3 representation for two scenes train and geisel.
+| Name       | size | link      |
+|------------|-----|-----------------|
+| train      | 2.04GB  | https://huggingface.co/xueyanz/M3-Train/resolve/main/train_ckpt.tar.gz   |
+| geisel     | 1.04GB  | https://huggingface.co/xueyanz/M3-Train/resolve/main/geisel_ckpt.tar.gz  |
 
 ## Training
 ```sh
